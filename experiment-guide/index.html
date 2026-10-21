@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="以危化厂房消防救援为情境，结合机器人第一视角遥操作、视觉目标核查、香橙派与昇腾边缘模型部署，开展智能辅助与沉浸式人机协同实验。">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/png" href="./assets/seu-emblem.png?v=20261020-11">
+  <title>面向消防救援的智能辅助与沉浸式人机协同虚拟仿真实验 · 实验导览</title>
+  <link rel="stylesheet" href="./guide.css">
+  <script src="./guide.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳转到主要内容</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="university" type="button" data-home aria-label="返回实验首页">
+        <svg class="official-logo" viewBox="0 0 225 63" width="225" height="63" role="img" aria-labelledby="identity-title">
+          <title id="identity-title">东南大学</title>
+          <defs>
+            <clipPath id="identity-university"><rect x="75" width="150" height="46"/></clipPath>
+            <mask id="identity-university-ink" maskUnits="userSpaceOnUse" x="75" y="0" width="150" height="63"><g transform="translate(0 8)"><image href="./assets/seu-cse-logo.png" width="969" height="63" clip-path="url(#identity-university)"/></g></mask>
+          </defs>
+          <image href="./assets/seu-emblem.png?v=20261020-11" width="70" height="63" preserveAspectRatio="xMidYMid meet"/>
+          <rect x="75" width="150" height="63" fill="var(--primary)" mask="url(#identity-university-ink)"/>
+        </svg>
+      </button>
+      <div class="header-context"><span>虚拟仿真实验教学</span><small>人机交互与智能机器人</small></div>
+    </div>
+    <nav class="site-navigation" aria-label="主要栏目"><div class="navigation-inner">
+      <button type="button" data-home aria-current="page">实验首页</button>
+      <button type="button" data-nav-module="intro">实验介绍</button>
+      <button type="button" data-nav-module="principles">实验原理</button>
+      <button type="button" data-nav-module="workflow">实验流程</button>
+      <a class="navigation-enter" href="../unity/">进入实验 <span aria-hidden="true">→</span></a>
+    </div></nav>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <div id="home-panel">
+      <section class="hero page-width" aria-labelledby="experiment-title">
+        <div class="hero-copy">
+          <h1 id="experiment-title">面向消防救援的<span class="title-term">智能辅助</span><span class="title-term">与沉浸式人机协同</span><span class="title-term">虚拟仿真实验</span></h1>
+          <p class="project-basis">基于教育部“两新项目”采购的全国产设备和自主研发的实验平台<br>本项目依托教育部“两新项目”采购的全国产设备和自主研发的实验平台</p>
+          <p class="hero-description">以危化厂房消防救援中的机器人前出侦察为背景，结合 Unity、PICO、香橙派与 TonyPi，开展机器人第一视角遥操作、视觉目标核查及边缘模型部署，通过任务实践与对照分析研究智能辅助和人机协同。</p>
+          <div class="topics" aria-label="学习主题"><span>智能辅助感知</span><span>第一视角遥操作</span><span>人机协同</span></div>
+          <div class="hero-actions"><a class="primary-link" href="../unity/">进入实验 <span aria-hidden="true">→</span></a></div>
+        </div>
+        <figure class="study-figure">
+          <img src="./assets/factory-study.svg?v=20261021-illustration-1" width="800" height="500" alt="危化厂房内教学机器人观察环境、感知模拟火点与开展协同处置的示意图">
+          <figcaption>危化厂房与虚实交互任务示意</figcaption>
+        </figure>
+      </section>
+      <dl class="experiment-meta page-width" aria-label="实验基本信息">
+        <div><dt>实验情境</dt><dd>危化厂房消防救援</dd></div>
+        <div><dt>实验平台</dt><dd>香橙派 · Unity · PICO · TonyPi</dd></div>
+        <div><dt>学习重点</dt><dd>智能辅助与人机协同</dd></div>
+      </dl>
+    </div>
+    <section id="detail-panel" class="detail page-width" hidden aria-labelledby="detail-title">
+        <div class="detail-main">
+      <div class="detail-location">当前位置：<button type="button" class="back-link" data-home>实验首页</button><span aria-hidden="true">／</span><span id="location-current">实验介绍</span></div>
+      <div class="detail-heading"><div><h2 id="detail-title" tabindex="-1"></h2></div><span class="detail-context">面向消防救援的智能辅助与沉浸式人机协同虚拟仿真实验</span></div>
+      <div class="intro-tabs" role="tablist" aria-label="实验介绍栏目" id="intro-tabs">
+        <button type="button" id="tab-overview" role="tab" aria-controls="module-content" aria-selected="true" data-tab="overview">实验概况</button>
+        <button type="button" id="tab-operation" role="tab" aria-controls="module-content" aria-selected="false" tabindex="-1" data-tab="operation">操作说明</button>
+        <button type="button" id="tab-interface" role="tab" aria-controls="module-content" aria-selected="false" tabindex="-1" data-tab="interface">界面说明</button>
+      </div>
+      <div class="module-content" id="module-content"></div>
+        </div>
+    </section>
+  </main>
+</body>
+</html>
+
+

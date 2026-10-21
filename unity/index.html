@@ -3,130 +3,120 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | robot</title>
+    <title>Unity WebGL Player | robot</title>
+    <meta name="description" content="PICO VR 工厂实验场景">
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-  <style id='browser-lab-layout'>
-html,body{margin:0!important;width:100%;height:100%;overflow:hidden;background:#172724}
-#unity-container,#unity-container.unity-desktop,#unity-container.unity-mobile{
-position:fixed!important;inset:0!important;width:100%!important;height:100%!important;
-left:0!important;top:0!important;transform:none!important}
-#unity-canvas{display:block!important;width:100%!important;height:100%!important;outline:none}
-#unity-footer{display:none!important}
-</style>
-<style id="experiment-hud-visibility">
-#browser-experiment-hud{display:none!important}
-</style>
-</head>
+    <style>
+      html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#172724}
+      #unity-container,#unity-canvas-container{position:fixed!important;inset:0;left:0!important;top:0!important;transform:none!important;width:100%!important;height:100%!important}
+      #unity-canvas{width:100%!important;height:100%!important;outline:none}
+      #unity-footer,#browser-experiment-hud{display:none!important}
+      #pico-entry{position:fixed;left:18px;bottom:18px;z-index:1000;max-width:calc(100% - 36px);padding:12px 16px;background:#122c2eea;border:1px solid #638d83;border-radius:10px;color:#e0f0e9;font:14px/1.6 sans-serif}
+      #pico-entry #entervr{float:none;width:auto;height:auto;padding:10px 18px;border:0;border-radius:6px;background:#a5e2cd;color:#14372d;font-weight:bold}
+      #pico-entry button:disabled{opacity:.5}#pico-status{margin-top:5px}
+    </style>
+  </head>
   <body>
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+    <div id="unity-container">
+      <div id="unity-canvas-container">
+        <canvas id="unity-canvas" style="width: 100%; height: 100%;"></canvas>
+      </div>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
           <div id="unity-progress-bar-full"></div>
         </div>
       </div>
-      <div id="unity-warning"> </div>
       <div id="unity-footer">
-        <div id="unity-logo-title-footer"></div>
-        <div id="unity-fullscreen-button"></div>
+        <div id="unity-webgl-logo"></div>
+        <button id="unused-vr" disabled>VR</button>
+        <button id="enterar" value="Enter AR" disabled>AR</button>
+        <div id="unity-webxr-link">Using <a href="https://github.com/De-Panther/unity-webxr-export" target="_blank" title="WebXR Export">WebXR Export</a></div>
         <div id="unity-build-title">robot</div>
       </div>
     </div>
+    <div id="pico-entry"><button id="entervr" disabled>进入 PICO VR</button><div id="pico-status" role="status">正在加载实验…</div><div>左摇杆移动 · 右摇杆转向 · 扳机 / 握持键控制手指</div></div>
     <script>
-      var canvas = document.querySelector("#unity-canvas");
-
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        var warningBanner = document.querySelector("#unity-warning");
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
-        }
-        updateBannerVisibility();
-      }
-
       var buildUrl = "./Build";
-      var loaderUrl = buildUrl + "/webgl-pico-staging.loader.js?v=webgl-20261021";
+      var loaderUrl = buildUrl + "/webgl-pico-staging.loader.js?v=minimap-1792501870";
       var config = {
-        arguments: [],
-        dataUrl: buildUrl + "/webgl-pico-staging.data?v=webgl-20261021",
-        frameworkUrl: buildUrl + "/webgl-pico-staging.framework.js?v=webgl-20261021",
-        codeUrl: buildUrl + "/webgl-pico-staging.wasm?v=webgl-20261021",
+        dataUrl: buildUrl + "/webgl-pico-staging.data?v=minimap-1792501870",
+        frameworkUrl: buildUrl + "/webgl-pico-staging.framework.js?v=minimap-1792501870",
+        codeUrl: buildUrl + "/webgl-pico-staging.wasm?v=minimap-1792501870",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "robot",
         productVersion: "0.1",
-        showBanner: unityShowBanner,
         cacheControl: () => "no-store",
       };
 
-      // By default, Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var canvasContainer = document.querySelector("#unity-canvas-container");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var unityInstance = null;
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-        document.querySelector("#unity-container").className = "unity-mobile";
-        canvas.className = "unity-mobile";
-
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
-
-
-      } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
-      }
-
-      document.querySelector("#unity-loading-bar").style.display = "block";
+      canvasContainer.style.width = "960px";
+      canvasContainer.style.height = "600px";
+      loadingBar.style.display = "block";
 
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
-          document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
-              }).then((unityInstance) => {
-                document.querySelector("#unity-loading-bar").style.display = "none";
-                document.querySelector("#unity-fullscreen-button").onclick = () => {
-                  unityInstance.SetFullscreen(1);
-                };
-
-              }).catch((message) => {
-                alert(message);
-              });
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((instance) => {
+          unityInstance = instance;
+          enterVRButton.disabled = !vrSupported;
+          updateXRStatus();
+          loadingBar.style.display = "none";
+          if (fullscreenButton)
+          {
+            fullscreenButton.onclick = () => {
+              unityInstance.SetFullscreen(1);
             };
-
+          }
+        }).catch((message) => {
+          alert(message);
+        });
+      };
       document.body.appendChild(script);
 
+      let enterARButton = document.getElementById('enterar');
+      let enterVRButton = document.getElementById('entervr');
+      let vrSupported = false;
+      function updateXRStatus() {
+        const label = document.getElementById('pico-status');
+        document.getElementById('pico-entry').style.display = vrSupported ? 'block' : 'none';
+        if (!window.isSecureContext) label.textContent = 'PICO VR 需要 HTTPS 地址，或通过 USB 转发访问头显 localhost。';
+        else if (!navigator.xr) label.textContent = '当前浏览器未提供 WebXR；请使用支持 WebXR 的 PICO 浏览器。';
+        else if (!vrSupported) label.textContent = '未检测到沉浸式 VR 支持；电脑仍可使用键鼠操作。';
+        else label.textContent = '准备就绪，点击进入 VR。';
+      }
+
+      document.addEventListener('onARSupportedCheck', function (event) {
+        enterARButton.disabled = !event.detail.supported;
+      }, false);
+      document.addEventListener('onVRSupportedCheck', function (event) {
+        vrSupported = !!event.detail.supported;
+        enterVRButton.disabled = !vrSupported || !unityInstance;
+        updateXRStatus();
+      }, false);
+
+      enterARButton.addEventListener('click', function (event) {
+        unityInstance.Module.WebXR.toggleAR();
+      }, false);
+      enterVRButton.addEventListener('click', function (event) {
+        if (unityInstance && vrSupported) {
+          try { unityInstance.Module.WebXR.toggleVR(); }
+          catch (error) { document.getElementById('pico-status').textContent = '进入 VR 失败：' + error.message; }
+        }
+      }, false);
+      updateXRStatus();
     </script>
   </body>
 </html>
-
 

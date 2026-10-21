@@ -2,6 +2,7 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | robot</title>
     <meta name="description" content="PICO VR 工厂实验场景">
@@ -10,15 +11,19 @@
       #unity-container,#unity-canvas-container{position:fixed!important;inset:0;left:0!important;top:0!important;transform:none!important;width:100%!important;height:100%!important}
       #unity-canvas{width:100%!important;height:100%!important;outline:none}
       #unity-footer,#browser-experiment-hud{display:none!important}
-      #unity-loading-bar{position:fixed;z-index:2000;left:50%;top:50%;transform:translate(-50%,-50%);box-sizing:border-box;width:min(460px,calc(100% - 40px));padding:26px;background:#fff;color:#173b5c;border:1px solid #dce7ef;border-radius:8px;font:15px/1.7 system-ui,sans-serif}
-      #unity-loading-title{font-size:20px;font-weight:600;margin-bottom:12px}
-      #unity-progress-bar-empty{height:8px;overflow:hidden;background:#dce7ef;border-radius:4px;margin:14px 0}
-      #unity-progress-bar-full{height:100%;width:0;background:#17659a;transition:width .2s}
-      #unity-loading-status{overflow-wrap:anywhere;margin:0;color:#334155}
-      #unity-loading-hint{margin:8px 0 0;font-size:13px;color:#64748b}
+      #unity-loading-bar{position:fixed;z-index:2000;left:50%;top:50%;transform:translate(-50%,-50%);box-sizing:border-box;width:min(300px,calc(100% - 40px));color:#fff;text-align:center;font:13px/1.7 system-ui,sans-serif}
+      #unity-logo{width:154px;height:130px;margin:0 auto;background:url('data:image/png;base64,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') no-repeat center}
+      #unity-loading-title,#unity-loading-hint{display:none}
+      #unity-progress-bar-empty{width:141px;height:18px;overflow:hidden;margin:10px auto 0;background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI0AAAASAQAAAABOFWCeAAAAAnRSTlMAAHaTzTgAAAAZSURBVHgBY/iPDn5gEzrAgAYkRqgQceEFAAzIU22a66fQAAAAAElFTkSuQmCC') no-repeat left center}
+      #unity-progress-bar-full{height:18px;width:0;background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI0AAAASAQAAAABOFWCeAAAAEUlEQVR4AWP4jw5+UCw0KgQAUYhCTnW3FD4AAAAASUVORK5CYII=') no-repeat left center;background-size:141px 18px;transition:width .2s}
+      #unity-loading-status{overflow-wrap:anywhere;margin:12px 0 0;color:#e6e6e6}
       #unity-retry{margin-top:16px;padding:8px 18px;background:#17659a;color:#fff;border:0;border-radius:4px;cursor:pointer;font:inherit}
       #unity-retry:hover{background:#247caf}
-      #unity-loading-bar[data-state="error"] #unity-loading-title{color:#9f3030}
+      #unity-loading-bar[data-state="error"]{width:min(460px,calc(100% - 40px));max-height:calc(100% - 40px);overflow:auto;padding:26px;background:#fff;border:1px solid #dce7ef;border-radius:8px;text-align:left;font-size:15px}
+      #unity-loading-bar[data-state="error"] #unity-logo,#unity-loading-bar[data-state="error"] #unity-progress-bar-empty{display:none}
+      #unity-loading-bar[data-state="error"] #unity-loading-title{display:block;color:#9f3030;font-size:20px;font-weight:600;margin-bottom:12px}
+      #unity-loading-bar[data-state="error"] #unity-loading-status{margin:0;color:#334155}
+      #unity-loading-bar[data-state="error"] #unity-loading-hint{display:block;margin:8px 0 0;font-size:13px;color:#64748b}
       #pico-entry{position:fixed;left:18px;bottom:18px;z-index:1000;max-width:calc(100% - 36px);padding:12px 16px;background:#122c2eea;border:1px solid #638d83;border-radius:10px;color:#e0f0e9;font:14px/1.6 sans-serif}
       #pico-entry #entervr{float:none;width:auto;height:auto;padding:10px 18px;border:0;border-radius:6px;background:#a5e2cd;color:#14372d;font-weight:bold}
       #pico-entry button:disabled{opacity:.5}#pico-status{margin-top:5px}
@@ -30,6 +35,7 @@
         <canvas id="unity-canvas" style="width: 100%; height: 100%;"></canvas>
       </div>
       <div id="unity-loading-bar">
+        <div id="unity-logo" aria-hidden="true"></div>
         <div id="unity-loading-title">正在加载实验场景</div>
         <div id="unity-progress-bar-empty">
           <div id="unity-progress-bar-full"></div>
@@ -48,17 +54,212 @@
     </div>
     <div id="pico-entry"><button id="entervr" disabled>进入 PICO VR</button><div id="pico-status" role="status">正在加载实验…</div><div>左摇杆移动 · 右摇杆转向 · 扳机 / 握持键控制手指</div></div>
     <script>
+// Cache only the pinned Pages .data asset in bounded CacheStorage entries.
+// Large single-response cache.put calls fail in some Chromium installations.
+(function (global) {
+  'use strict';
+  const DATA_HASH = '1113d14dc3eb742aee8aaebc27a9eb1b7fe3e95a8e08f97de82951d2906b3d4c';
+  const DATA_SIZE = 588536707;
+  const CHUNK_SIZE = 32 * 1024 * 1024;
+  const CACHE_NAME = 'robot-pages-data-chunks-v1';
+  const MAX_PENDING_WRITES = 2;
+
+  global.createPagesDataCacheFetch = function (module) {
+    // Capture before the caller installs the returned function on the module.
+    const fallback = (module.cachedFetch || module.fetchWithProgress).bind(module);
+    const log = message => console.log('[PagesDataCache] ' + message);
+    const absolute = value => new URL(typeof value === 'string' ? value : value.url, document.URL);
+    const keyBase = new URL('./__pages_data_cache__/' + DATA_HASH + '/', absolute(module.dataUrl)).href;
+    const manifestKey = keyBase + 'manifest.json';
+    const chunkKey = (generation, index) => keyBase + generation + '/' + index;
+    const expectedCount = Math.ceil(DATA_SIZE / CHUNK_SIZE);
+
+    function eligible(url, options) {
+      const target = absolute(url);
+      return (!options.method || options.method === 'GET') && options.control === 'immutable' &&
+        target.href === absolute(module.dataUrl).href && target.origin === new URL(document.URL).origin &&
+        target.pathname.endsWith('.data') && target.searchParams.get('v') === DATA_HASH.slice(0, 16);
+    }
+
+    function validManifest(value, url) {
+      return value && value.version === 1 && value.url === url && value.hash === DATA_HASH &&
+        value.size === DATA_SIZE && value.chunkSize === CHUNK_SIZE && value.count === expectedCount &&
+        typeof value.generation === 'string' && /^[a-z0-9-]{1,80}$/.test(value.generation);
+    }
+
+    async function removeOwnChunks(cache, generation, count) {
+      // Never delete a different writer's manifest or completed generation.
+      for (let index = 0; index < count; index++) {
+        try { await cache.delete(chunkKey(generation, index)); } catch (_) {}
+      }
+    }
+
+    async function forgetManifest(cache, generation) {
+      try {
+        const current = await cache.match(manifestKey);
+        if (current && (await current.json()).generation === generation) await cache.delete(manifestKey);
+      } catch (_) {}
+    }
+
+    async function readCache(cache, manifest, options) {
+      let index = 0;
+      let current;
+      let partBytes = 0;
+      const stream = new ReadableStream({
+        async pull(controller) {
+          try {
+            if (!current) {
+              if (index === manifest.count) { controller.close(); return; }
+              const part = await cache.match(chunkKey(manifest.generation, index));
+              const expected = Math.min(CHUNK_SIZE, DATA_SIZE - index * CHUNK_SIZE);
+              if (!part || !part.body || Number(part.headers.get('Content-Length')) !== expected) {
+                throw new Error('Missing or invalid cached chunk ' + index);
+              }
+              current = part.body.getReader();
+              partBytes = 0;
+            }
+            const next = await current.read();
+            if (next.done) {
+              const expected = Math.min(CHUNK_SIZE, DATA_SIZE - index * CHUNK_SIZE);
+              if (partBytes !== expected) throw new Error('Truncated cached chunk ' + index);
+              current.releaseLock(); current = null; index++;
+              // Do not enqueue empty chunks; continue to the next part.
+              return this.pull(controller);
+            }
+            partBytes += next.value.byteLength;
+            if (partBytes > Math.min(CHUNK_SIZE, DATA_SIZE - index * CHUNK_SIZE)) {
+              throw new Error('Oversized cached chunk ' + index);
+            }
+            controller.enqueue(next.value);
+          } catch (error) {
+            if (current) { try { await current.cancel(error); } catch (_) {} }
+            controller.error(error);
+          }
+        },
+        cancel(reason) { if (current) return current.cancel(reason); },
+      });
+      const response = new Response(stream, { status: 200, headers: {
+        'Content-Type': 'application/octet-stream', 'Content-Length': String(DATA_SIZE),
+      } });
+      return module.readBodyWithProgress(response, options.onProgress || function () {}, options.enableStreamingDownload);
+    }
+
+    async function saveInBackground(cache, response, url) {
+      const generation = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2);
+      const reader = response.body.getReader();
+      const pending = new Set();
+      const writes = [];
+      let count = 0;
+      let total = 0;
+      let failure;
+      let buffer = new Uint8Array(CHUNK_SIZE);
+      let used = 0;
+      function store(bytes) {
+        if (failure) throw failure;
+        if (pending.size >= MAX_PENDING_WRITES) throw new Error('Cache storage cannot keep up; skipping this save');
+        const key = chunkKey(generation, count++);
+        const task = Promise.resolve().then(() => cache.put(key, new Response(bytes, { headers: {
+          'Content-Type': 'application/octet-stream', 'Content-Length': String(bytes.byteLength),
+        } }))).catch(error => { failure = error; }).finally(() => pending.delete(task));
+        pending.add(task); writes.push(task);
+      }
+      try {
+        while (true) {
+          if (failure) throw failure;
+          const next = await reader.read();
+          if (next.done) break;
+          total += next.value.byteLength;
+          if (total > DATA_SIZE) throw new Error('Unexpected data size; cache save cancelled');
+          let offset = 0;
+          while (offset < next.value.byteLength) {
+            const length = Math.min(buffer.byteLength - used, next.value.byteLength - offset);
+            buffer.set(next.value.subarray(offset, offset + length), used);
+            offset += length; used += length;
+            if (used === CHUNK_SIZE) { store(buffer); buffer = new Uint8Array(CHUNK_SIZE); used = 0; }
+          }
+        }
+        if (total !== DATA_SIZE) throw new Error('Incomplete data; cache save cancelled');
+        if (used) store(buffer.slice(0, used));
+        await Promise.all(writes);
+        if (failure) throw failure;
+        // Publishing the manifest is the commit point. Partial generations are never hits.
+        await cache.put(manifestKey, new Response(JSON.stringify({
+          version: 1, url, hash: DATA_HASH, size: DATA_SIZE, chunkSize: CHUNK_SIZE,
+          count, generation,
+        }), { headers: { 'Content-Type': 'application/json' } }));
+        log('Saved complete data in ' + count + ' chunks');
+      } catch (error) {
+        // Cancelling only the clone leaves Unity's original response running.
+        reader.cancel(error).catch(function () {});
+        await Promise.all(writes);
+        await removeOwnChunks(cache, generation, count);
+        log('Cache save skipped: ' + (error.message || error));
+      } finally {
+        buffer = null;
+      }
+    }
+
+    return async function (url, options) {
+      options = options || {};
+      if (!eligible(url, options)) return fallback(url, options);
+      let cache;
+      const href = absolute(url).href;
+      if (global.caches && typeof Response !== 'undefined' && typeof ReadableStream !== 'undefined') {
+        try {
+          cache = await global.caches.open(CACHE_NAME);
+          const stored = await cache.match(manifestKey);
+          if (stored) {
+            let manifest;
+            try { manifest = await stored.json(); } catch (_) {}
+            if (validManifest(manifest, href)) {
+              try {
+                const result = await readCache(cache, manifest, options);
+                log('Loaded complete data from chunk cache');
+                return result;
+              } catch (error) {
+                log('Cached data unavailable; downloading again: ' + (error.message || error));
+                await forgetManifest(cache, manifest.generation);
+              }
+            }
+          }
+        } catch (error) {
+          log('Cache unavailable: ' + (error.message || error));
+          cache = null;
+        }
+      }
+      // A failed network request is deliberately not caught as a cache failure.
+      const response = await fetch(url, options);
+      if (!response.ok) throw new Error('Data download failed: HTTP ' + response.status);
+      if (cache && response.body) {
+        try {
+          saveInBackground(cache, response.clone(), href).catch(error => log('Cache save skipped: ' + error));
+        } catch (error) { log('Cache save skipped: ' + error); }
+      }
+      return module.readBodyWithProgress(response, options.onProgress || function () {}, options.enableStreamingDownload);
+    };
+  };
+})(window);
+
+    </script>
+    <script>
       var buildUrl = "./Build";
       var loaderUrl = "./pages-loader.js?v=20261021-1";
       var config = {
-        dataUrl: buildUrl + "/webgl-pico-staging.data?v=minimap-1792501870",
+        dataUrl: buildUrl + "/webgl-pico-staging.data?v=1113d14dc3eb742a",
         frameworkUrl: buildUrl + "/webgl-pico-staging.framework.js?v=minimap-1792501870",
         codeUrl: buildUrl + "/webgl-pico-staging.wasm?v=minimap-1792501870",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "robot",
-        productVersion: "0.1",
-        cacheControl: () => "no-store",
+        productVersion: "webgl-demo-20261021",
+        cacheControl: function (url) {
+          if (url !== this.dataUrl) return "no-store";
+          if (!this.pagesCacheInstalled) {
+            this.cachedFetch = window.createPagesDataCacheFetch(this);
+            this.pagesCacheInstalled = true;
+          }
+          return "immutable";
+        },
         showBanner: (message, type) => {
           console[type === "error" ? "error" : "warn"](message);
           if (type === "error") showLoadError(message);
@@ -99,7 +300,7 @@
           if (loadingFailed) return;
           const percent = Math.min(100, Math.floor(100 * progress));
           progressBarFull.style.width = percent + "%";
-          loadStatus.textContent = progress < 0.9 ? "正在下载实验资源：" + percent + "%" : "资源下载完成，正在初始化 Unity 场景…";
+          loadStatus.textContent = progress < 0.9 ? "正在加载… " + percent + "%" : "正在初始化场景…";
         }).then((instance) => {
           unityInstance = instance;
           enterVRButton.disabled = !vrSupported;

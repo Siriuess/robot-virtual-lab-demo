@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-labelledby="factory-title factory-description" fill="none">
+  <title id="factory-title">危化厂房救援任务示意</title>
+  <desc id="factory-description">浅蓝色厂房剖视图，展示机器人在通道内观察环境、核查模拟火点和开展协同处置的过程。虚线表示操作路线。</desc>
+  <defs>
+    <pattern id="paper-grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#E7EFF5" stroke-width=".7"/></pattern>
+    <marker id="route-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="m1 1 7 4-7 4" fill="none" stroke="#397DA5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <style>
+      text{font-family:"Microsoft YaHei","PingFang SC",sans-serif}
+      .structure{stroke:#8BAAC1;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      .secondary{stroke:#C4D5E2;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+      .leader{stroke:#9AB8CD;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+      .label{font-size:19px;font-weight:500;fill:#365E7D}
+      .number{font-size:15px;font-weight:600;fill:#2C4D86;text-anchor:middle}
+    </style>
+  </defs>
+  <path fill="#FFFFFF" d="M0 0h800v500H0z"/>
+  <path fill="url(#paper-grid)" opacity=".48" d="M24 90h752v344H24z"/>
+  <path d="M37 29v30" stroke="#397DA5" stroke-width="3"/>
+  <text x="52" y="51" font-size="24" font-weight="600" fill="#2C4D86" letter-spacing="1">危化厂房救援示意</text>
+  <text x="53" y="77" font-size="14" fill="#64748B" letter-spacing="1">第一视角观察 · 智能辅助 · 人机协同</text>
+
+  <path d="m168 306 211-122 258 149-211 122-258-149Z" fill="#F0F6FA" stroke="#B3CBDD" stroke-width="1.8"/>
+  <g stroke="#DCE8F0" stroke-width="1">
+    <path d="m211 331 211-122m-168 147 211-122m-168 147 211-122m-168 147 211-122m-168 147 211-122"/>
+    <path d="m210 282 258 149M252 258l258 149M294 234l258 149M336 210l258 149"/>
+  </g>
+  <path d="M168 306V196L379 74v110L168 306Z" fill="#EAF2F8" class="structure"/>
+  <path d="M379 74 637 223v110L379 184V74Z" fill="#F7FAFD" class="structure"/>
+  <path d="m168 196 258 149 211-122" class="secondary" stroke-dasharray="5 8" opacity=".7"/>
+  <path d="m168 306 258 149 211-122" class="structure"/>
+  <path d="m216 168 163-94 210 121" stroke="#A9C2D5" stroke-width="1.5"/>
+  <path d="M242 153v110m69-150v110M455 118v110m83-62v110M596 200v109" class="secondary"/>
+  <path d="m183 228 44-25v47l-44 25v-47Z" fill="#FFFFFF" stroke="#BCD1E0" stroke-width="1.5"/>
+  <path d="m183 251 44-25m-22-11v46" class="secondary"/>
+  <path d="m463 151 53 31v32l-53-31v-32Zm72 42 53 30v32l-53-30v-32Z" fill="#FFFFFF" stroke="#C4D5E2" stroke-width="1.5"/>
+  <g class="structure" stroke-width="1.6">
+    <path d="m270 266 43-25 51 29-43 25-51-29Z" fill="#FFFFFF"/>
+    <path d="M270 266v43l51 29v-43l-51-29Z" fill="#DEEAF3"/>
+    <path d="m321 295 43-25v43l-43 25v-43Z" fill="#EDF4F9"/>
+    <path d="m490 350 43-25 57 33-43 25-57-33Z" fill="#FFFFFF"/>
+    <path d="M490 350v38l57 33v-38l-57-33Z" fill="#DEEAF3"/>
+    <path d="m547 383 43-25v38l-43 25v-38Z" fill="#EDF4F9"/>
+  </g>
+  <path d="m283 288 24 14m0 9-24-14m220 77 29 17" stroke="#ADC7DB" stroke-width="2" stroke-linecap="round"/>
+  <path d="m252 351 64 37 58-34 46 26 56-33" stroke="#397DA5" stroke-width="3" stroke-dasharray="8 7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#route-arrow)"/>
+  <circle cx="252" cy="351" r="5" fill="#397DA5"/>
+  <path d="m369 319 87-47 48 54-135-7Z" fill="#397DA5" fill-opacity=".07"/>
+  <path d="m369 319 104-27m-104 27 87-47m-87 47 135 7" stroke="#8BAFC9" stroke-width="1.3" stroke-dasharray="4 6"/>
+  <ellipse cx="359" cy="371" rx="27" ry="10" fill="#DBE8F2"/>
+  <g stroke="#365E7D" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m346 296 13-7 15 8-13 8-15-9Z" fill="#FFFFFF"/>
+    <path d="M346 296v17l15 8v-16m13-8v17l-13 7" fill="#E3EEF6"/>
+    <path d="m343 320 17-8 17 10-4 23-16 8-17-10 3-23Z" fill="#FFFFFF"/>
+    <path d="m360 312-3 41m-14-28 14 8 19-11" stroke="#85A9C5" stroke-width="1.5"/>
+    <path d="m340 324-12 13 6 13m43-23 12 7 8-11"/>
+    <path d="m348 348-4 17-9 7m29-21 5 16 10 4"/>
+    <path d="m332 372 10 3m29-4 11 2" stroke-width="4"/>
+  </g>
+  <circle cx="367" cy="306" r="3.8" fill="#397DA5"/>
+  <path d="m350 331 9 5 9-5v9l-9 5-9-5v-9Z" fill="#397DA5" opacity=".85"/>
+  <ellipse cx="484" cy="323" rx="25" ry="10" fill="#F3E9E2" stroke="#D9BDA8" stroke-width="1.2"/>
+  <path d="M479 316c-15-3-18-15-11-26 2 7 6 8 7 5-2-13 6-19 8-29 7 9 9 18 8 23 4-1 6-5 7-9 12 14 15 28 4 35-7 5-15 5-23 1Z" fill="#C78257"/>
+  <path d="M481 314c-6-3-7-8-3-14 1 4 3 5 4 2 0-4 3-8 4-11 7 10 10 18 5 23-3 2-7 2-10 0Z" fill="#F0D6BD"/>
+  <g>
+    <circle cx="63" cy="136" r="16" fill="#EFF5FA" stroke="#C4D5E2"/>
+    <text x="63" y="141" class="number">01</text><text x="87" y="143" class="label">环境观察</text>
+    <path d="M52 163h69v33h47" class="leader"/><circle cx="168" cy="196" r="3.8" fill="#8BAAC1"/>
+    <circle cx="623" cy="137" r="16" fill="#EFF5FA" stroke="#C4D5E2"/>
+    <text x="623" y="142" class="number">02</text><text x="647" y="144" class="label">目标感知</text>
+    <path d="M623 163h99v113H520l-20 16" class="leader"/><circle cx="500" cy="292" r="3.8" fill="#8BAAC1"/>
+    <circle cx="623" cy="409" r="16" fill="#EFF5FA" stroke="#C4D5E2"/>
+    <text x="623" y="414" class="number">03</text><text x="647" y="416" class="label">协同处置</text>
+    <path d="M623 384h97v-40H479" class="leader"/><circle cx="479" cy="344" r="3.8" fill="#8BAAC1"/>
+  </g>
+  <path d="M37 464h726" stroke="#DCE7EF"/>
+  <g font-size="15" fill="#64748B">
+    <rect x="53" y="480" width="11" height="11" rx="2" fill="#397DA5"/><text x="73" y="491">教学机器人</text>
+    <circle cx="287" cy="485" r="6" fill="#C78257"/><text x="302" y="491">模拟火点</text>
+    <path d="M501 485h35" stroke="#397DA5" stroke-width="2.5" stroke-dasharray="5 5"/><text x="547" y="491">操作路线</text>
+  </g>
+</svg>
+

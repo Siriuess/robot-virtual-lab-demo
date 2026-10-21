@@ -33,8 +33,8 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p site/unity/Build
-          cp -R experiment-guide site/experiment-guide
-          cp -R unity site/unity
+          cp -R experiment-guide/. site/experiment-guide
+          cp -R unity/. site/unity
           cp index.html site/index.html
           cp .nojekyll site/.nojekyll
           rm -rf site/unity/Build

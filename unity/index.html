@@ -80,7 +80,10 @@
             };
           }
         }).catch((message) => {
-          alert(message);
+          const text = String(message);
+          const status = document.getElementById('pico-status');
+          if (status) status.textContent = 'Unity 加载失败：' + text;
+          console.error('Unity startup failed:', text);
         });
       };
       document.body.appendChild(script);

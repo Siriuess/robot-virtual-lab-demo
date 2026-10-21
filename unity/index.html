@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | robot</title>
     <meta name="description" content="PICO VR 工厂实验场景">
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
     <style>
       html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#172724}
       #unity-container,#unity-canvas-container{position:fixed!important;inset:0;left:0!important;top:0!important;transform:none!important;width:100%!important;height:100%!important}
       #unity-canvas{width:100%!important;height:100%!important;outline:none}
       #unity-footer,#browser-experiment-hud{display:none!important}
+      #unity-loading-bar{position:fixed;z-index:2000;left:50%;top:50%;transform:translate(-50%,-50%);box-sizing:border-box;width:min(460px,calc(100% - 40px));padding:26px;background:#fff;color:#173b5c;border:1px solid #dce7ef;border-radius:8px;font:15px/1.7 system-ui,sans-serif}
+      #unity-loading-title{font-size:20px;font-weight:600;margin-bottom:12px}
+      #unity-progress-bar-empty{height:8px;overflow:hidden;background:#dce7ef;border-radius:4px;margin:14px 0}
+      #unity-progress-bar-full{height:100%;width:0;background:#17659a;transition:width .2s}
+      #unity-loading-status{overflow-wrap:anywhere;margin:0;color:#334155}
+      #unity-loading-hint{margin:8px 0 0;font-size:13px;color:#64748b}
+      #unity-retry{margin-top:16px;padding:8px 18px;background:#17659a;color:#fff;border:0;border-radius:4px;cursor:pointer;font:inherit}
+      #unity-retry:hover{background:#247caf}
+      #unity-loading-bar[data-state="error"] #unity-loading-title{color:#9f3030}
       #pico-entry{position:fixed;left:18px;bottom:18px;z-index:1000;max-width:calc(100% - 36px);padding:12px 16px;background:#122c2eea;border:1px solid #638d83;border-radius:10px;color:#e0f0e9;font:14px/1.6 sans-serif}
       #pico-entry #entervr{float:none;width:auto;height:auto;padding:10px 18px;border:0;border-radius:6px;background:#a5e2cd;color:#14372d;font-weight:bold}
       #pico-entry button:disabled{opacity:.5}#pico-status{margin-top:5px}
@@ -23,10 +30,13 @@
         <canvas id="unity-canvas" style="width: 100%; height: 100%;"></canvas>
       </div>
       <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
+        <div id="unity-loading-title">正在加载实验场景</div>
         <div id="unity-progress-bar-empty">
           <div id="unity-progress-bar-full"></div>
         </div>
+        <p id="unity-loading-status" role="status" aria-live="polite">正在连接资源服务器…</p>
+        <p id="unity-loading-hint">首次访问需下载约 607 MiB 的实验资源，请保持页面打开。</p>
+        <button id="unity-retry" hidden>重新加载</button>
       </div>
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
@@ -39,7 +49,7 @@
     <div id="pico-entry"><button id="entervr" disabled>进入 PICO VR</button><div id="pico-status" role="status">正在加载实验…</div><div>左摇杆移动 · 右摇杆转向 · 扳机 / 握持键控制手指</div></div>
     <script>
       var buildUrl = "./Build";
-      var loaderUrl = buildUrl + "/webgl-pico-staging.loader.js?v=minimap-1792501870";
+      var loaderUrl = "./pages-loader.js?v=20261021-1";
       var config = {
         dataUrl: buildUrl + "/webgl-pico-staging.data?v=minimap-1792501870",
         frameworkUrl: buildUrl + "/webgl-pico-staging.framework.js?v=minimap-1792501870",
@@ -49,6 +59,11 @@
         productName: "robot",
         productVersion: "0.1",
         cacheControl: () => "no-store",
+        showBanner: (message, type) => {
+          console[type === "error" ? "error" : "warn"](message);
+          if (type === "error") showLoadError(message);
+        },
+        errorHandler: (message) => { showLoadError(message); return true; },
       };
 
       var container = document.querySelector("#unity-container");
@@ -58,6 +73,20 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var unityInstance = null;
+      var loadingFailed = false;
+      var loadStatus = document.getElementById("unity-loading-status");
+      function showLoadError(message) {
+        loadingFailed = true;
+        loadingBar.style.display = "block";
+        loadingBar.dataset.state = "error";
+        document.getElementById("unity-loading-title").textContent = "实验加载未完成";
+        loadStatus.textContent = String(message);
+        document.getElementById("unity-loading-hint").textContent = "请确认网络连接后重试；若持续失败，请保留此错误信息。";
+        document.getElementById("unity-retry").hidden = false;
+      }
+      document.getElementById("unity-retry").onclick = () => window.location.reload();
+      canvas.addEventListener("webglcontextlost", () => showLoadError("图形上下文已丢失，请重新加载实验。"));
+      window.addEventListener("unhandledrejection", event => showLoadError(event.reason || "实验启动异常"));
 
       canvasContainer.style.width = "960px";
       canvasContainer.style.height = "600px";
@@ -67,7 +96,10 @@
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
+          if (loadingFailed) return;
+          const percent = Math.min(100, Math.floor(100 * progress));
+          progressBarFull.style.width = percent + "%";
+          loadStatus.textContent = progress < 0.9 ? "正在下载实验资源：" + percent + "%" : "资源下载完成，正在初始化 Unity 场景…";
         }).then((instance) => {
           unityInstance = instance;
           enterVRButton.disabled = !vrSupported;
@@ -80,12 +112,11 @@
             };
           }
         }).catch((message) => {
-          const text = String(message);
-          const status = document.getElementById('pico-status');
-          if (status) status.textContent = 'Unity 加载失败：' + text;
-          console.error('Unity startup failed:', text);
+          showLoadError(message);
+          console.error("Unity startup failed:", message);
         });
       };
+      script.onerror = () => showLoadError("无法下载 Unity 加载器，请检查网络连接后重试。");
       document.body.appendChild(script);
 
       let enterARButton = document.getElementById('enterar');
@@ -122,4 +153,3 @@
     </script>
   </body>
 </html>
-

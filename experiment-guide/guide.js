@@ -1,6 +1,10 @@
 'use strict';
 (() => {
   const home = document.getElementById('home-panel');
+  const homeVideos = Array.from(home.querySelectorAll('video'));
+  homeVideos.forEach(video => video.addEventListener('play', () => {
+    homeVideos.forEach(other => { if (other !== video) other.pause(); });
+  }));
   const detail = document.getElementById('detail-panel');
   const title = document.getElementById('detail-title');
   const content = document.getElementById('module-content');
@@ -243,6 +247,7 @@
       currentModule = button.dataset.navModule;
       currentTab = 'overview';
       render();
+      homeVideos.forEach(video => video.pause());
       home.hidden = true;
       detail.hidden = false;
       window.scrollTo({ top: 0, behavior: 'auto' });
@@ -269,4 +274,3 @@
     buttons[i].focus();
   });
 })();
-

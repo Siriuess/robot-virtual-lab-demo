@@ -23,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Download experiment guide media
+        run: git lfs pull --include="experiment-guide/assets/videos/**" --exclude=""
 
       - uses: actions/configure-pages@v5
         with:

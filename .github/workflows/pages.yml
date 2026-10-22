@@ -1,5 +1,6 @@
 name: Deploy experiment guide to GitHub Pages
 # Icon refresh
+# Refresh emblem asset cache
 on:
   push:
     branches: [main]

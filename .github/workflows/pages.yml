@@ -1,4 +1,5 @@
 name: Deploy experiment guide to GitHub Pages
+# Icon refresh
 on:
   push:
     branches: [main]

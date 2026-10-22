@@ -2,6 +2,7 @@ name: Deploy experiment guide to GitHub Pages
 # Icon refresh
 # Refresh emblem asset cache
 # Upload complete PNG
+# Yellow emblem
 on:
   push:
     branches: [main]

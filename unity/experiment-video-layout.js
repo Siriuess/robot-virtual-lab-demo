@@ -14,7 +14,7 @@
   title.textContent = "实景对照";
   const intro = document.createElement("p");
   intro.className = "video-intro";
-  intro.textContent = "点击 Unity 场景后移动、转向或按住 G 喷射干粉，两段录像同步前进；松开操作即暂停。";
+  intro.textContent = "点击 Unity 场景后移动、转向或按住 G 喷射干粉。";
   panel.append(title, intro);
   for (const entry of config.videos) {
     const card = document.createElement("figure");

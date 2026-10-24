@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none">
+ <defs><linearGradient id="bg" x1="100" y1="0" x2="700" y2="450" gradientUnits="userSpaceOnUse"><stop stop-color="#18386a"/><stop offset="1" stop-color="#101c38"/></linearGradient><linearGradient id="ground" x1="280" y1="210" x2="580" y2="470" gradientUnits="userSpaceOnUse"><stop stop-color="#326181"/><stop offset="1" stop-color="#163b5d"/></linearGradient><linearGradient id="glass" x1="300" y1="150" x2="560" y2="300" gradientUnits="userSpaceOnUse"><stop stop-color="#74c6e3" stop-opacity=".6"/><stop offset="1" stop-color="#2a6d9c" stop-opacity=".1"/></linearGradient><pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0v36" stroke="#9dc0f3" stroke-opacity=".07"/></pattern></defs>
+ <path fill="url(#bg)" d="M0 0h800v450H0z"/><path fill="url(#grid)" d="M0 0h800v450H0z"/>
+ <g opacity=".7"><path d="M23 22h126m-126 0v22M777 22H651m126 0v22M23 428h126m-126 0v-22M777 428H651m126 0v-22" stroke="#6095c8" stroke-opacity=".4"/><text x="43" y="54" fill="#97c0e3" font-family="Arial,sans-serif" font-size="11" letter-spacing="3">VIRTUAL LAB / SCENE 01</text><circle cx="739" cy="49" r="4" fill="#7fbecb"/></g>
+ <path d="m113 268 289-166 288 166-288 166-289-166Z" fill="url(#ground)" stroke="#5b91b7" stroke-opacity=".5"/>
+ <g stroke="#8ac0d6" stroke-opacity=".13"><path d="m170 301 289-166m-231 199 289-166m-231 199 289-166m-231 199 289-166m-289-99 288 166m-346-133 288 166m-346-133 288 166m-346-133 288 166"/></g>
+ <path d="m200 274 202-116 204 116-204 118-202-118Z" stroke="#8fcadf" stroke-opacity=".6" stroke-width="2"/>
+ <path d="m240 274 162-93 164 93-164 95-162-95Z" stroke="#7da5c6" stroke-width="18" stroke-opacity=".15"/>
+ <path d="m240 274 162-93 164 93-164 95-162-95Z" stroke="#b8cfe2" stroke-opacity=".55" stroke-dasharray="11 9"/>
+ <path d="M303 156 403 98l103 58v116l-103 60-100-60V156Z" fill="url(#glass)" stroke="#97d3eb" stroke-opacity=".45"/>
+ <path d="m303 156 100 60 103-60m-103 60v116" stroke="#9cd6ef" stroke-opacity=".6"/>
+ <path d="m303 272 100-58 103 58" stroke="#91c7e1" stroke-dasharray="4 5" stroke-opacity=".4"/>
+ <path d="M403 98v116" stroke="#91c7e1" stroke-dasharray="4 5" stroke-opacity=".4"/>
+ <path d="m385 307 39-22 34 20-39 23-34-21Z" fill="#91bee6"/><path d="M385 307v16l34 21v-16m39-23v17l-39 22" fill="#477aab"/><path d="m395 308 25-14 22 13-24 15-23-14Z" fill="#aedcee"/><path d="M391 325v9m15 0v9m25-8v9m15-17v9" stroke="#192f51" stroke-width="10" stroke-linecap="round"/>
+ <g stroke="#87bce5" stroke-opacity=".45"><path d="M170 174v-49h92m310 28h76v49M184 342h-56v38h88"/><circle cx="170" cy="174" r="4"/><circle cx="572" cy="153" r="4"/><circle cx="184" cy="342" r="4"/></g>
+ <g font-family="Arial,sans-serif" fill="#98b9da"><text x="179" y="115" font-size="9" letter-spacing="2">INTERACTIVE ENVIRONMENT</text><text x="586" y="140" font-size="9" letter-spacing="2">DIGITAL TWIN</text><text x="137" y="401" font-size="9" letter-spacing="2">OBSERVE / EXPLORE / LEARN</text></g>
+ <g fill="#7db3d9" opacity=".4"><path d="M647 305h63v3h-63zm0 9h40v3h-40zm0 9h54v3h-54zm0 9h26v3h-26zM70 205h51v3H70zm0 9h30v3H70zm0 9h43v3H70z"/></g>
+</svg>

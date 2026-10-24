@@ -1,2 +1,119 @@
-<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=experiment-guide/"><title>实验平台</title><p><a href="experiment-guide/">进入实验平台</a></p>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="面向未来信息领域的人机交互与智能机器人方向，依托VR、CAVE大空间和机器人教学基础，开展消防救援机器人虚拟仿真实验。">
+  <meta name="theme-color" content="#173f37">
+  <title>消防救援机器人虚拟仿真实验 · 未来信息实验平台</title>
+  <link rel="stylesheet" href="./academic.css?v=academic-20261019">
+  <script src="./config.js?v=academic-20261024-illustration-1" defer></script>
+  <script src="./app.js?v=academic-20261019" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#project-content">跳转到项目内容</a>
+  <div class="institution-bar"><div class="container"><span>东南大学 <b>·</b> 计算机科学与工程学院</span><span>虚拟仿真实验教学 · 人机交互与智能机器人</span></div></div>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a class="brand" href="./" aria-label="实验教学平台首页">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 44 44"><path d="M22 3 39 13v19L22 42 5 32V13Z"/><path d="m5 13 17 10 17-10M22 23v19M14 8l17 10v10l-9 5-9-5V18l17-10"/></svg></span>
+        <span><strong id="brand-name">未来信息实验平台</strong><small>VIRTUAL SIMULATION LAB</small></span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="./" class="nav-item"><span data-icon="home"></span>首页</a>
+        <a href="#related" class="nav-item active"><span data-icon="flask"></span>实验中心</a>
+        <a href="#project-content" class="nav-item" id="resources-nav"><span data-icon="book"></span>教学资源</a>
+        <button class="nav-item" data-open="guide"><span data-icon="shield"></span>使用指南</button>
+        <button class="nav-item" data-open="about"><span data-icon="layers"></span>平台介绍</button>
+      </nav>
+      <span class="preview-label"><i></i>项目建设中</span>
+      <button class="mobile-menu icon-button" aria-label="展开导航" aria-expanded="false"><span data-icon="menu"></span></button>
+    </div>
+  </header>
 
+  <main>
+    <section class="project-hero" aria-labelledby="project-title">
+      <div class="container">
+        <div class="breadcrumb"><a href="./">首页</a><span>›</span><a href="#related">实验中心</a><span>›</span><span>项目详情</span></div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow"><span></span> 未来信息 / 人机交互与智能机器人</div>
+            <div class="title-row"><h1 id="project-title"></h1><span class="project-badge">人工智能+</span></div>
+            <p class="project-byline" id="project-byline"></p>
+            <dl class="metadata" id="metadata"></dl>
+            <p class="hero-description" id="project-description"></p>
+            <div class="hero-actions">
+              <button class="button button-primary" id="start-experiment"><span data-icon="gamepad"></span>我要做实验<span data-icon="arrow"></span></button>
+              <div class="social-actions">
+                <button id="like-button" aria-pressed="false"><span data-icon="like"></span><span>点赞</span></button>
+                <button id="favorite-button" aria-pressed="false"><span data-icon="heart"></span><span>收藏</span></button>
+                <button id="share-button"><span data-icon="share"></span>分享</button>
+                <button id="rate-button">实验评价</button>
+              </div>
+            </div>
+          </div>
+          <div class="hero-media">
+            <div class="media-heading" role="tablist" aria-label="视频类型">
+              <button id="intro-video-tab" role="tab" aria-selected="true" aria-controls="video-panel" tabindex="0" data-video="intro">实验简介视频</button>
+              <button id="guide-video-tab" role="tab" aria-selected="false" aria-controls="video-panel" tabindex="-1" data-video="guide">教学引导视频</button>
+            </div>
+            <div id="video-panel" role="tabpanel" aria-labelledby="intro-video-tab"><button class="video-poster" id="video-poster" aria-label="查看实验简介视频">
+              <img id="project-poster" src="./assets/experiment-preview.svg" alt="虚拟实验场景示意，项目视频待上传">
+              <span class="video-shade"></span><span class="play-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7Z" fill="currentColor"/></svg></span>
+              <span class="poster-bottom"><span id="video-label">实验简介</span><span class="poster-chip">视频待上传</span></span>
+            </button></div>
+            <div class="media-note"><span>图 01 / 厂房救援任务概念示意</span><span>线上键鼠 · 线下 VR / CAVE</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="page-body container">
+      <section class="teaching-overview" aria-label="实验教学概览">
+        <div class="overview-label"><span>实验教学概览</span><small>LEARNING AT A GLANCE</small></div>
+        <div><strong>26<span>步</span></strong><small>分阶段交互教学规划</small></div>
+        <div><strong>03<span>类</span></strong><small>认知 · 搜寻 · 处置</small></div>
+        <div><strong class="text-value">键盘 / 鼠标</strong><small>浏览器中的自主实践</small></div>
+        <div><strong class="text-value">VR / CAVE</strong><small>线下沉浸式教学基础</small></div>
+      </section>
+
+      <div class="content-layout">
+        <div class="content-main">
+          <section class="panel introduction" id="project-content" aria-label="实验内容">
+            <div class="primary-tabs" role="tablist" aria-label="项目信息">
+              <button id="tab-introduction" role="tab" aria-selected="true" aria-controls="information-panel" tabindex="0" data-tab="introduction">实验介绍</button>
+              <button id="tab-requirements" role="tab" aria-selected="false" aria-controls="information-panel" tabindex="-1" data-tab="requirements">实验必读</button>
+              <button id="tab-resources" role="tab" aria-selected="false" aria-controls="information-panel" tabindex="-1" data-tab="resources">教学资源</button>
+              <span class="tab-side-label">EXPERIMENT & LEARNING</span>
+            </div>
+            <div id="information-panel" role="tabpanel" aria-labelledby="tab-introduction" tabindex="0">
+              <div class="secondary-tabs" role="tablist" aria-label="实验介绍目录" id="section-tabs"></div>
+              <article id="article-content" role="tabpanel" tabindex="0"></article>
+            </div>
+          </section>
+
+          <section class="panel related" id="related">
+            <div class="section-heading"><h2 id="related-heading">核心任务模块</h2><span><span id="related-caption">围绕消防救援过程开展学习</span><span data-icon="arrow"></span></span></div>
+            <div class="related-grid" id="related-grid"></div>
+          </section>
+
+          <section class="learning-banner"><div class="banner-symbol" data-icon="layers"></div><div><span>从环境观察，到救援任务复盘</span><p>以操作、状态变化与反馈连接人机交互知识和机器人实践。</p></div><button class="button button-outline" data-open="guide">查看学习指南 <span data-icon="arrow"></span></button></section>
+        </div>
+
+        <aside class="sidebar" aria-label="实验配套信息">
+          <section class="panel browser-panel"><h2 class="underlined">实验运行环境</h2><div class="browser-row"><span class="browser-icon edge">e</span><span class="browser-icon chrome"><i></i></span><span>Chrome / Edge<small>建议使用新版桌面浏览器</small></span></div><div class="environment-note"><span data-icon="monitor"></span>建议分辨率 1280 × 720 及以上</div></section>
+          <section class="panel support-panel"><h2 class="underlined">教学支持</h2><p class="support-line"><span data-icon="mail"></span><a id="support-contact"></a></p><small>课程咨询与实验使用帮助</small></section>
+          <section class="panel team-panel"><h2 class="underlined">教学团队</h2><div class="lead-person"><img class="lead-photo" src="./assets/ding-ding.png" alt="项目负责人丁玎"><div><strong id="team-lead"></strong><span id="team-institution"></span><span id="team-title"></span><small>项目负责人</small></div></div><p id="team-appointment" class="team-appointment"></p><div class="team-divider"><span>主要成员</span><span>TEACHING TEAM</span></div><ul class="member-list" id="member-list"></ul></section>
+          <section class="panel process-panel"><h2 class="underlined">学习流程</h2><ol><li><b>01</b><div>环境与装备认知<small>了解厂房布局与机器人功能</small></div></li><li><b>02</b><div>视角切换与遥操作<small>练习观察、移动与转向</small></div></li><li><b>03</b><div>任务训练与复盘<small>结合救援任务分析操作结果</small></div></li></ol></section>
+          <div class="framework-note"><span data-icon="info"></span><p>项目处于建设阶段。26步交互及进阶任务按教学规划组织，具体开放功能以实际实验版本为准。</p></div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="./"><span class="brand-mark" data-icon="flask"></span><span><strong id="footer-name">未来信息实验平台</strong><small>VIRTUAL SIMULATION LAB</small></span></a><p>人机交互与智能机器人 · 消防救援实践</p><div><span>“人工智能+”虚拟仿真实验教学项目</span><small>线上虚拟实验 · VR / CAVE 线下沉浸式实践</small></div><button id="back-top" aria-label="返回顶部"><span data-icon="up"></span></button></div></footer>
+
+  <dialog id="modal" aria-labelledby="modal-title"><div class="modal-header"><span class="modal-eyebrow">VIRTUAL SIMULATION LAB</span><button class="icon-button" id="close-modal" aria-label="关闭弹窗"><span data-icon="close"></span></button></div><h2 id="modal-title"></h2><div id="modal-body"></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

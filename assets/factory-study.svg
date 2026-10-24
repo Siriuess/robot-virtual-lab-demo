@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" fill="none">
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#bdcdb6" stroke-opacity=".06"/></pattern>
+    <linearGradient id="floor" x1="170" y1="150" x2="600" y2="420" gradientUnits="userSpaceOnUse"><stop stop-color="#355d4d"/><stop offset="1" stop-color="#24483d"/></linearGradient>
+  </defs>
+  <path fill="#1b3f35" d="M0 0h800v500H0z"/><path fill="url(#grid)" d="M0 0h800v500H0z"/>
+  <g stroke="#b7c9aa" stroke-opacity=".28"><path d="M34 53V30h23M743 30h23v23M34 447v23h23m686 0h23v-23"/><path d="M53 73h694M53 437h694"/></g>
+  <g fill="#c9d4bd" font-family="Georgia,serif"><text x="54" y="56" font-size="15" letter-spacing="3">FIRE RESCUE / SIMULATION STUDY</text><text x="54" y="461" font-size="10" letter-spacing="2">OBSERVATION · INTERACTION · RESPONSE</text></g>
+  <text x="685" y="57" fill="#b9aa72" font-family="Arial,sans-serif" font-size="10" letter-spacing="2">FIG. 01</text>
+  <path d="M123 308 390 156 673 319 408 472 123 308Z" fill="url(#floor)" stroke="#adc1a0" stroke-opacity=".5"/>
+  <g stroke="#a4b698" stroke-opacity=".12"><path d="m167 333 266-152m-220 179 266-152m-220 179 266-152m-220 179 266-152m-220 179 266-152M167 283l283 163M211 258l283 163M255 233l283 163M299 208l283 163M343 183l283 163"/></g>
+  <g stroke="#bdd0ae" stroke-width="1.4" stroke-linejoin="round">
+    <path d="M184 307V193L389 77l221 127v114" stroke-opacity=".7"/>
+    <path d="m184 193 205 119 221-108M389 312v102" stroke-opacity=".42" stroke-dasharray="5 7"/>
+    <path d="m184 307 205 119 221-108M184 193l57-75 148-84 221 128v42" stroke-opacity=".5"/>
+    <path d="m241 118 205 119 164-75M389 77l57 160v92" stroke-opacity=".35"/>
+    <path d="M184 193v114l76 44V237l-76-44Z" fill="#41634e" fill-opacity=".55"/>
+    <path d="M260 237v114l54 31v-96l75-43" stroke-opacity=".7"/>
+    <path d="M314 382l43-25m80-108 75 44v74m0-74 65-37" stroke-opacity=".65"/>
+  </g>
+  <g fill="#416b51" stroke="#9db88e" stroke-opacity=".7"><path d="m284 252 36-21 39 23-36 21-39-23Z"/><path d="M284 252v32l39 23v-32m36-21v32l-36 21"/><path d="m485 326 42-24 45 26-42 24-45-26Z"/><path d="M485 326v32l45 26v-32m42-24v32l-42 24"/></g>
+  <path d="m265 359 42 24 57-33 40 23 65-38" stroke="#d4bb7b" stroke-width="2" stroke-dasharray="6 7"/>
+  <g fill="#c3ad73"><circle cx="265" cy="359" r="4"/><circle cx="469" cy="335" r="4"/></g>
+  <g stroke="#e0e8d1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="349" cy="292" r="9" fill="#2b5040"/><path d="m349 303-1 26m-12-24 12 5 15-3m-15 22-10 22m10-22 13 19m-25-43-9 18m36-16 11 16"/></g>
+  <g fill="#cbb276"><path d="M475 293c-13-7-10-18-4-25 0 8 6 9 5 1 8 9 18 22 9 26-4 3-7 1-10-2Z"/><circle cx="479" cy="286" r="5" fill="#e9d5a0"/></g>
+  <g stroke="#bdcbb0" stroke-opacity=".5"><path d="M184 193h-62v-62H68m542 121h68v-83h52M572 351h107v43h51"/><circle cx="184" cy="193" r="3"/><circle cx="610" cy="252" r="3"/><circle cx="572" cy="351" r="3"/></g>
+  <g font-family="Arial,sans-serif" fill="#becdb0" font-size="9" letter-spacing="1.2"><text x="67" y="117">01 / ENVIRONMENT</text><text x="627" y="157">02 / TELEOPERATION</text><text x="626" y="417">03 / RESPONSE</text></g>
+</svg>

@@ -1,16 +1,7 @@
-name: Deploy experiment guide to GitHub Pages
-# Icon refresh
-# Refresh emblem asset cache
-# Upload complete PNG
-# Yellow emblem
+name: Deploy experiment website to GitHub Pages
 on:
   push:
     branches: [main]
-    paths:
-      - "experiment-guide/**"
-      - "unity/**"
-      - ".github/workflows/pages.yml"
-      - "index.html"
   workflow_dispatch:
 permissions:
   contents: read
@@ -27,42 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download experiment guide media
-        run: git lfs pull --include="experiment-guide/assets/videos/**" --exclude=""
-
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      - name: Prepare same-origin Unity WebGL assets
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p site/unity/Build
-          cp -R experiment-guide/. site/experiment-guide
-          cp -R unity/. site/unity
-          cp index.html site/index.html
-          cp .nojekyll site/.nojekyll
-          rm -rf site/unity/Build
-          mkdir -p site/unity/Build
-          release_base="https://github.com/Siriuess/robot-virtual-lab-demo/releases/download/webgl-demo-20261021"
-          for asset in webgl-pico-staging.loader.js webgl-pico-staging.framework.js webgl-pico-staging.wasm webgl-pico-staging.data; do
-            curl --fail --location --retry 3 --retry-delay 3 "${release_base}/${asset}" -o "site/unity/Build/${asset}"
-          done
-          python3 - <<'PY'
-          from pathlib import Path
-          p = Path("site/unity/index.html")
-          s = p.read_text(encoding="utf-8")
-          s = s.replace(
-              'var buildUrl = "https://github.com/Siriuess/robot-virtual-lab-demo/releases/download/webgl-demo-20261021";',
-              'var buildUrl = "./Build";'
-          )
-          p.write_text(s, encoding="utf-8")
-          PY
-
+      - name: Prepare website and verified same-origin media
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/prepare-pages.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
-
       - id: deployment
         uses: actions/deploy-pages@v4

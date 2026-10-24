@@ -1,0 +1,42 @@
+body[data-video-layout] { --video-sidebar-width: clamp(280px,26vw,420px); color:#e7eeec; font-family:"Microsoft YaHei",sans-serif; }
+body[data-video-layout] #unity-container { position:absolute!important; inset:0!important; width:100%!important; height:100%!important; }
+body[data-video-layout] #unity-canvas-container { position:absolute!important; inset:0!important; width:100%!important; height:100%!important; }
+body[data-video-layout="sidebar"] #unity-container { width:calc(100% - var(--video-sidebar-width))!important; }
+#experiment-videos { box-sizing:border-box; position:fixed; z-index:900; right:0; top:0; width:var(--video-sidebar-width); height:100%; overflow-y:auto; padding:22px 18px; background:#112321; border-left:1px solid #34524a; }
+#experiment-videos h1 { font-size:18px; font-weight:600; margin:0 0 6px; }
+#experiment-videos .video-intro { color:#a5bfb6; font-size:12px; line-height:1.7; margin:0 0 20px; }
+.experiment-video-card { min-width:0; margin:0 0 20px; overflow:hidden; border:1px solid #3a554e; border-radius:10px; background:#1b302b; }
+.experiment-video-card figcaption { padding:11px 13px; display:flex; gap:6px; flex-direction:column; }
+.experiment-video-card strong { font-size:14px; font-weight:600; }
+.experiment-video-card small { color:#a5bfb6; font-size:11px; }
+.experiment-video-card video { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:contain; background:#050b09; }
+.experiment-video-card[data-video-id="robot"] video { aspect-ratio:4/3; }
+.experiment-video-error { margin:0; padding:10px; color:#ffd9ab; font-size:12px; }
+#experiment-video-sync { margin:0 0 18px; padding:12px; border:1px solid #3a554e; border-radius:10px; background:#19322b; font-size:12px; }
+#experiment-video-sync[hidden] { display:none!important; }
+#experiment-video-sync .sync-follow, #experiment-video-sync .sync-audio { display:flex; align-items:center; gap:6px; }
+#experiment-video-sync input[type="checkbox"] { accent-color:#a5e2cd; }
+#sync-status { color:#b9d1c6; line-height:1.6; min-height:38px; margin:9px 0; }
+.sync-actions { display:flex; flex-wrap:wrap; gap:7px; margin:8px 0; }
+#experiment-video-sync button { cursor:pointer; border:1px solid #638d83; border-radius:5px; padding:6px 9px; color:#e0f0e9; background:#264d40; font:inherit; }
+#experiment-video-sync button:focus-visible { outline:2px solid #a5e2cd; outline-offset:2px; }
+#sync-timeline { width:100%; accent-color:#a5e2cd; }
+#sync-time, #sync-offset { display:block; color:#b9d1c6; margin:5px 0 9px; font-variant-numeric:tabular-nums; }
+#experiment-video-sync summary { cursor:pointer; color:#b9d1c6; margin:8px 0; }
+body[data-video-layout="overlay"] #experiment-video-sync { position:fixed; left:18px; bottom:18px; width:260px; box-sizing:border-box; max-width:45vw; }
+body[data-video-layout="overlay"] #experiment-videos { width:0; height:0; padding:0; border:0; overflow:visible; background:transparent; }
+body[data-video-layout="overlay"] #experiment-videos > h1,
+body[data-video-layout="overlay"] #experiment-videos > .video-intro { display:none; }
+body[data-video-layout="overlay"] .experiment-video-card { position:fixed; margin:0; box-shadow:0 5px 24px #0006; }
+body[data-video-layout="overlay"] .experiment-video-card small { display:none; }
+body[data-video-layout="overlay"] .experiment-video-card figcaption { padding:7px 10px; }
+@media(max-width:760px) {
+  body[data-video-layout="sidebar"] { overflow:auto!important; }
+  body[data-video-layout="sidebar"] #unity-container { width:100%!important; height:62vh!important; }
+  body[data-video-layout="sidebar"] #experiment-videos { position:absolute; top:62vh; width:100%; height:auto; min-height:38vh; display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:16px; border-left:0; border-top:1px solid #34524a; }
+  body[data-video-layout="sidebar"] #experiment-videos h1,
+  body[data-video-layout="sidebar"] #experiment-videos .video-intro,
+  body[data-video-layout="sidebar"] #experiment-video-sync { grid-column:1/-1; margin:0; }
+  body[data-video-layout="sidebar"] .experiment-video-card { margin:0; align-self:start; }
+  body[data-video-layout="overlay"] .experiment-video-card { max-width:45vw; }
+}

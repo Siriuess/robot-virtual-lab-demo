@@ -1,0 +1,70 @@
+{
+  "release": "webgl-demo-20261024-161314",
+  "source": {
+    "portal": "/home/zhouyue/robot/lab-portal/dist",
+    "unity": "/home/zhouyue/robot/webgl",
+    "build": "webgl-video-clock-20261024-161314"
+  },
+  "assets": [
+    {
+      "name": "sample.bin",
+      "path": "network-test/sample.bin",
+      "size": 16777216,
+      "sha256": "e8e33bf995a2f17beecc4bb72647c1094541e399c87b68403cd69b6855a7a569"
+    },
+    {
+      "name": "experiment-introduction.mp4",
+      "path": "experiment-guide/assets/videos/experiment-introduction.mp4",
+      "size": 120726515,
+      "sha256": "ea559c0d0332dd0b7f0da5255ce90fd3d5db48147c5803147318dd5787c9a04d"
+    },
+    {
+      "name": "teaching-guide.mp4",
+      "path": "experiment-guide/assets/videos/teaching-guide.mp4",
+      "size": 108065804,
+      "sha256": "0ab920247fb750a845a0c500e845e9a507280780f22ef1e904f2fc388abcbfff"
+    },
+    {
+      "name": "panorama-cut66.mp4",
+      "path": "unity/experiment-videos/panorama-cut66.mp4",
+      "size": 14959474,
+      "sha256": "99782cb7b429a05289079671a390b9c104755e2d1c4a798e2089f32442561f43"
+    },
+    {
+      "name": "robot-first-person-aligned66.mp4",
+      "path": "unity/experiment-videos/robot-first-person-aligned66.mp4",
+      "size": 8840476,
+      "sha256": "1c1581b15aaf567c2d5f8278b4233d3347037e3ce1a19dbd8d2543111a10d670"
+    },
+    {
+      "name": "robot-first-person-cut80p8.mp4",
+      "path": "unity/experiment-videos/robot-first-person-cut80p8.mp4",
+      "size": 10154010,
+      "sha256": "809bfbd1cadcdf40556cd4b7a92e67037584227e55fc3a0b94fa2637529b6bcd"
+    },
+    {
+      "name": "webgl-video-clock-20261024-161314.data",
+      "path": "unity/Build/webgl-video-clock-20261024-161314.data",
+      "size": 588537587,
+      "sha256": "ca418184d75de86add45c469cc4dd377cbe790587cb82a3e2b4a6ff30451b79b"
+    },
+    {
+      "name": "webgl-video-clock-20261024-161314.wasm",
+      "path": "unity/Build/webgl-video-clock-20261024-161314.wasm",
+      "size": 47276771,
+      "sha256": "650b0cbc50f35b9f84c193a2e03fe64be369e527a1a549934ff6cc2327744af1"
+    },
+    {
+      "name": "webgl-video-clock-20261024-161314.framework.js",
+      "path": "unity/Build/webgl-video-clock-20261024-161314.framework.js",
+      "size": 544511,
+      "sha256": "2a462d735d73e7a2a9cee3ed792b5ef8bc915183210922850ec6790444dd8a26"
+    },
+    {
+      "name": "webgl-video-clock-20261024-161314.loader.js",
+      "path": "unity/Build/webgl-video-clock-20261024-161314.loader.js",
+      "size": 25469,
+      "sha256": "a9f59ec524e132d97426b595ac2b10b27b6bf92ee9d0a191042d4109583b8c96"
+    }
+  ]
+}

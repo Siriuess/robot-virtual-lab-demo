@@ -28,7 +28,13 @@
       #pico-entry #entervr{float:none;width:auto;height:auto;padding:10px 18px;border:0;border-radius:6px;background:#a5e2cd;color:#14372d;font-weight:bold}
       #pico-entry button:disabled{opacity:.5}#pico-status{margin-top:5px}
     </style>
-  </head>
+      <!-- Robot experiment video layouts -->
+    <link rel="stylesheet" href="experiment-video-layout.css?v=20261024-presentation2">
+    <script src="experiment-video-config.js?v=video-clock-20261024-161314" defer></script>
+    <script src="experiment-video-layout.js?v=20261024-cache-view1" defer></script>
+    <script src="experiment-video-sync.js?v=video-clock-20261024-161314" defer></script>
+
+</head>
   <body>
     <div id="unity-container">
       <div id="unity-canvas-container">
@@ -58,8 +64,8 @@
 // Large single-response cache.put calls fail in some Chromium installations.
 (function (global) {
   'use strict';
-  const DATA_HASH = '1113d14dc3eb742aee8aaebc27a9eb1b7fe3e95a8e08f97de82951d2906b3d4c';
-  const DATA_SIZE = 588536707;
+  const DATA_HASH = 'ca418184d75de86add45c469cc4dd377cbe790587cb82a3e2b4a6ff30451b79b';
+  const DATA_SIZE = 588537587;
   const CHUNK_SIZE = 32 * 1024 * 1024;
   const CACHE_NAME = 'robot-pages-data-chunks-v1';
   const MAX_PENDING_WRITES = 2;
@@ -243,15 +249,15 @@
     </script>
     <script>
       var buildUrl = "./Build";
-      var loaderUrl = "./pages-loader.js?v=20261021-1";
+      var loaderUrl = "./pages-loader.js?v=webgl-demo-20261024-161314";
       var config = {
-        dataUrl: buildUrl + "/webgl-pico-staging.data?v=1113d14dc3eb742a",
-        frameworkUrl: buildUrl + "/webgl-pico-staging.framework.js?v=minimap-1792501870",
-        codeUrl: buildUrl + "/webgl-pico-staging.wasm?v=minimap-1792501870",
+        dataUrl: buildUrl + "/webgl-video-clock-20261024-161314.data?v=ca418184d75de86a",
+        frameworkUrl: buildUrl + "/webgl-video-clock-20261024-161314.framework.js?v=webgl-demo-20261024-161314",
+        codeUrl: buildUrl + "/webgl-video-clock-20261024-161314.wasm?v=webgl-demo-20261024-161314",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "robot",
-        productVersion: "webgl-demo-20261021",
+        productVersion: "webgl-demo-20261024-161314",
         cacheControl: function (url) {
           if (url !== this.dataUrl) return "no-store";
           if (!this.pagesCacheInstalled) {

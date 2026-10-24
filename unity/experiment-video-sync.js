@@ -17,7 +17,7 @@
   let mouseUntil = 0, raf = 0, disposed = false, lastCorrection = 0;
   let videoBallFireActive = false;
   const keys = new Set();
-  const relevant = new Set(["KeyW", "KeyS", "KeyA", "KeyD", "KeyQ", "KeyE", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]);
+  const relevant = new Set(["KeyW", "KeyS", "KeyA", "KeyD", "KeyQ", "KeyE", "KeyG", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]);
   const controls = document.createElement("section");
   controls.id = "experiment-video-sync";
   controls.hidden = settings.showControls === false;
@@ -38,16 +38,32 @@
   const format = time => `${String(Math.floor(Math.max(0,time)/60)).padStart(2,"0")}:${Math.floor(Math.max(0,time)%60).toString().padStart(2,"0")}`;
   const clamp = time => Math.max(0, Math.min(duration, time));
   const time = () => pending === null ? clamp(robot.currentTime - offset) : pending;
+  function playbackRateAt(current) {
+    const segment = settings.approachSpeedup;
+    if (!segment) return 1;
+    const length = segment.endTimeSeconds - segment.startTimeSeconds;
+    const saved = segment.secondsSaved;
+    if (!(Number.isFinite(length) && Number.isFinite(saved) && saved > 0 && saved < length)) return 1;
+    return current >= segment.startTimeSeconds && current < segment.endTimeSeconds ? length / (length - saved) : 1;
+  }
+  function setPlaybackRates(current, drift = 0) {
+    const rate = playbackRateAt(current);
+    const followerRate = rate * (Math.abs(drift) < .015 ? 1 : drift > 0 ? .97 : 1.03);
+    if (robot.playbackRate !== rate) robot.playbackRate = rate;
+    if (panorama.playbackRate !== followerRate) panorama.playbackRate = followerRate;
+  }
   const clearInput = () => { keys.clear(); mouseUntil = 0; };
   function unityReady() { return !!window.unityInstance; }
   function syncUnityMotion(active = false) {
     if (!unityReady() || document.getElementById('browser-experiment-hud')?.dataset.motionClock !== '1') return;
+    // The deployed controller interprets a full turn input as 7.8 degrees/s.
+    const turnScale = Number.isFinite(settings.unityTurnSpeed) ? Math.min(1, Math.max(0, settings.unityTurnSpeed) / 7.8) : 1;
     window.unityInstance.SendMessage('Browser Keyboard Controller', 'SetVideoMotionState', JSON.stringify({
       time: time(), active,
       speed: Number.isFinite(settings.unityMovementSpeed) ? Math.max(0, settings.unityMovementSpeed) : .9,
       forward: Number(keys.has('KeyW') || keys.has('ArrowUp')) - Number(keys.has('KeyS') || keys.has('ArrowDown')),
       strafe: Number(keys.has('KeyE')) - Number(keys.has('KeyQ')),
-      turn: Number(keys.has('KeyD') || keys.has('ArrowRight')) - Number(keys.has('KeyA') || keys.has('ArrowLeft'))
+      turn: (Number(keys.has('KeyD') || keys.has('ArrowRight')) - Number(keys.has('KeyA') || keys.has('ArrowLeft'))) * turnScale
     }));
   }
   function setVideoBallFire(active) {
@@ -59,7 +75,7 @@
   function moving() {
     if (document.activeElement !== canvas || !unityReady()) return false;
     const axis = (positive, negative) => positive.some(key => keys.has(key)) !== negative.some(key => keys.has(key));
-    return axis(["KeyW","ArrowUp"],["KeyS","ArrowDown"]) || axis(["KeyD","ArrowRight"],["KeyA","ArrowLeft"]) || axis(["KeyE"],["KeyQ"]) || performance.now() < mouseUntil;
+    return axis(["KeyW","ArrowUp"],["KeyS","ArrowDown"]) || axis(["KeyD","ArrowRight"],["KeyA","ArrowLeft"]) || axis(["KeyE"],["KeyQ"]) || keys.has("KeyG") || performance.now() < mouseUntil;
   }
   function wanted() { return !document.hidden && !failed && (preview || (follow && moving())); }
   function stop() {
@@ -78,7 +94,7 @@
     pending = clamp(target);
     panorama.currentTime = pending;
     robot.currentTime = pending + offset;
-    panorama.playbackRate = robot.playbackRate = 1;
+    setPlaybackRates(pending);
     setVideoBallFire(pending >= (settings.videoBallFireTimeSeconds || Infinity));
   }
   function alignToMaster() {
@@ -115,6 +131,7 @@
       // that seek used to delay the first picture after a key press.
       if (pending === null && Math.abs(panorama.currentTime - clamp(robot.currentTime - offset)) > .025)
         alignToMaster();
+      setPlaybackRates(time());
       await Promise.all(videos.map(video => video.play()));
       if (token !== generation || !wanted()) videos.forEach(video => video.pause());
       else playing = true;
@@ -132,6 +149,7 @@
     if (initialized && !failed) {
       if (pending !== null && videos.every(video => !video.seeking && video.readyState >= 2)) pending = null;
       const current = time();
+      let rateDrift = 0;
       setVideoBallFire(current >= (settings.videoBallFireTimeSeconds || Infinity));
       if (current >= duration - .012) {
         stop(); preview = false;
@@ -139,22 +157,25 @@
       } else if (!wanted()) {
         if (playing || starting) stop();
         if (pending === null && !robot.seeking && !panorama.seeking && Math.abs(panorama.currentTime-current) > .008) panorama.currentTime = current;
-        status.textContent = follow ? "等待 Unity 移动或转向 · 松开操作即暂停" : "已暂停 · 点击同步预览播放";
+        status.textContent = follow ? "等待 Unity 移动、转向或 G 键喷射 · 松开操作即暂停" : "已暂停 · 点击同步预览播放";
       } else if (pending !== null || videos.some(video => video.readyState < 3 || video.seeking)) {
         if (playing) stop();
         status.textContent = "正在缓冲，两段录像一起等待…";
       } else {
         if (!playing) void start();
         const drift = panorama.currentTime - current;
-        const tolerance = (settings.driftToleranceFrames || 1) / fps;
+        // Preserve the same wall-time drift tolerance when source time advances
+        // faster; otherwise normal decoder phase differences trigger seek loops.
+        const tolerance = (settings.driftToleranceFrames || 1) / fps * playbackRateAt(current);
         if (Math.abs(drift) > tolerance && now-lastCorrection > 120) {
           lastCorrection = now;
           panorama.currentTime = current;
           robot.currentTime = current + offset;
           pending = current;
-        } else panorama.playbackRate = Math.abs(drift) < .015 ? 1 : drift > 0 ? .97 : 1.03;
+        } else rateDrift = drift;
         status.textContent = preview ? "两段录像同步预览中" : "Unity 操作中 · 两段录像同步播放";
       }
+      setPlaybackRates(current, rateDrift);
       render();
     }
     // Media can already advance before the asynchronous play() promises settle.

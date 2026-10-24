@@ -10,7 +10,10 @@ window.EXPERIMENT_VIDEO_CONFIG = {
     followUnityInput: true,
     // Metres per second of decoded video time; keyboard still controls direction.
     unityMovementSpeed: 0.9,
-    endTimeSeconds: 66,
+    // Degrees per second of video time; reduced to follow the recorded turn.
+    unityTurnSpeed: 6,
+    // User-reviewed idle/shaking intervals removed equally; action and normal speed retained.
+    endTimeSeconds: 59.666666666666664,
     driftToleranceFrames: 1,
     videoBallFireTimeSeconds: 23.333333
   },
@@ -20,7 +23,7 @@ window.EXPERIMENT_VIDEO_CONFIG = {
     robot: { bottom: "18px", right: "18px", width: "clamp(220px, 24vw, 360px)" }
   },
   videos: [
-    { id: "panorama", title: "实景全景", caption: "场地与机器人动作", src: "experiment-videos/panorama-cut66.mp4", poster: "experiment-videos/panorama.jpg" },
-    { id: "robot", title: "机器人第一视角", caption: "机器人摄像头录像", src: "experiment-videos/robot-first-person-aligned66.mp4", poster: "experiment-videos/robot-first-person-aligned.jpg" }
+    { id: "panorama", title: "实景全景", caption: "场地与机器人动作", src: "experiment-videos/panorama-idle-trim-v3.mp4", poster: "experiment-videos/panorama.jpg" },
+    { id: "robot", title: "机器人第一视角", caption: "机器人摄像头录像", src: "experiment-videos/robot-first-person-idle-trim-v3.mp4", poster: "experiment-videos/robot-first-person-aligned.jpg" }
   ]
 };

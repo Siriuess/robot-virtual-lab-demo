@@ -15,7 +15,7 @@ manifest = json.loads((root / "release-assets.json").read_text())
 for asset in manifest["assets"]:
     dest = site / asset["path"]
     dest.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run(["gh", "release", "download", manifest["release"],
+    subprocess.run(["gh", "release", "download", asset.get("release", manifest["release"]),
                     "--repo", "Siriuess/robot-virtual-lab-demo", "--pattern", asset["name"],
                     "--output", str(dest), "--clobber"], check=True)
     with dest.open("rb") as stream:

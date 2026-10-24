@@ -3,7 +3,8 @@
   "source": {
     "portal": "/home/zhouyue/robot/lab-portal/dist",
     "unity": "/home/zhouyue/robot/webgl",
-    "build": "webgl-video-clock-20261024-161314"
+    "build": "webgl-video-clock-20261024-161314",
+    "unity_ui_version": "user-idle-v3-20261024-182424"
   },
   "assets": [
     {
@@ -25,16 +26,18 @@
       "sha256": "0ab920247fb750a845a0c500e845e9a507280780f22ef1e904f2fc388abcbfff"
     },
     {
-      "name": "panorama-cut66.mp4",
-      "path": "unity/experiment-videos/panorama-cut66.mp4",
-      "size": 14959474,
-      "sha256": "99782cb7b429a05289079671a390b9c104755e2d1c4a798e2089f32442561f43"
+      "name": "panorama-idle-trim-v3.mp4",
+      "path": "unity/experiment-videos/panorama-idle-trim-v3.mp4",
+      "size": 16424881,
+      "sha256": "8c85355f662dda3cb3771af0f4f5e0082798172234108b724e5240f9131189b5",
+      "release": "unity-scene-sync-20261024-182424"
     },
     {
-      "name": "robot-first-person-aligned66.mp4",
-      "path": "unity/experiment-videos/robot-first-person-aligned66.mp4",
-      "size": 8840476,
-      "sha256": "1c1581b15aaf567c2d5f8278b4233d3347037e3ce1a19dbd8d2543111a10d670"
+      "name": "robot-first-person-idle-trim-v3.mp4",
+      "path": "unity/experiment-videos/robot-first-person-idle-trim-v3.mp4",
+      "size": 8151501,
+      "sha256": "c1e152e1becf851a444311d5b7510ee312259255712a3bf0ed1b7748e0a0f753",
+      "release": "unity-scene-sync-20261024-182424"
     },
     {
       "name": "robot-first-person-cut80p8.mp4",

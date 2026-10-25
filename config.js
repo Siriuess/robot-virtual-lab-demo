@@ -3,7 +3,7 @@
 window.LAB_CONFIG = {
   "siteName": "未来信息实验平台",
   "project": {
-    "title": "消防救援机器人虚拟仿真实验",
+    "title": "面向远程消防救援的智能感知与沉浸式人机协同虚拟仿真实验",
     "author": "丁玎",
     "institution": "东南大学",
     "year": "“人工智能+”虚拟仿真实验教学项目申报",

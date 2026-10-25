@@ -9,7 +9,7 @@
   const title = document.getElementById('detail-title');
   const content = document.getElementById('module-content');
   const tabs = document.getElementById('intro-tabs');
-  const experimentName = '面向消防救援的智能辅助与沉浸式人机协同虚拟仿真实验';
+  const experimentName = '面向远程消防救援的智能感知与沉浸式人机协同虚拟仿真实验';
   let currentModule = 'intro';
   let currentTab = 'overview';
   let homeScroll = 0;
